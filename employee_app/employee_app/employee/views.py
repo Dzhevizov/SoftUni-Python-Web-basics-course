@@ -12,6 +12,8 @@ from django.shortcuts import render, redirect
 #     )
 from django.urls import reverse_lazy
 
+from employee_app.employee.models import Department, Employee
+
 
 def home(request):
 
@@ -44,5 +46,20 @@ def department_details(request, dep_id):
 
 
 def list_departments(request):
-    return HttpResponse('This is list of departments')
+    department = Department(
+        name=f'Department {random.randint(1, 1024)}',
+    )
+    department.save()
+    Department.objects.create(
+        name=f'Department {random.randint(1, 1024)}',
+    )
+
+    print(list(Department.objects.filter(name='TV App')))
+    print(Department.objects.get(name='TV App'))
+
+    context = {
+        'departments': Department.objects.prefetch_related('employee_set').all(),
+        'employees': Employee.objects.all()
+    }
+    return render(request, 'list_of_departments.html', context)
 
