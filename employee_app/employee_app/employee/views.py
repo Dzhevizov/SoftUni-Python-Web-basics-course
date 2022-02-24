@@ -38,7 +38,7 @@ def not_found(request):
 
 
 def go_to_home(request):
-    return redirect('department details', dep_id=random.randint(1, 1024))
+    return redirect('index',)
 
 
 def department_details(request, dep_id):

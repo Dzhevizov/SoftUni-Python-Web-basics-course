@@ -1,0 +1,88 @@
+{% extends 'base/base.html' %}
+
+{% load department_tags %}
+{% load int_filters %}
+{% load string_filters %}
+
+{% block content %}
+    <h1>{{ title }}(original)</h1>
+    <h1>{{ title|lower }}(lower)</h1>
+    <h1>{{ title|capfirst }}(capfirst)</h1>
+    <h1>{{ title|capitalize }}(capitalize)</h1>
+    <h1>{{ num_1|increase_by:1000 }}</h1>
+
+    <p>{{ description }}(original)</p>
+    <p>{{ description|truncatewords:10 }}(truncatewords)</p>
+    <p>{{ description|truncatechars:10 }}(truncatechars)</p>
+
+    <div>
+        {{ employees }}
+    </div>
+    <div>
+        {{ employees|join:', ' }}
+    </div>
+    <div>
+        {{ departments_names|join:', ' }}
+    </div>
+    {{ filesize }}
+    {{ filesize|filesizeformat }}
+    <div>
+        {% if num_1 < 200 %}
+            {{ num_1 }} is less than 200
+        {% elif num_1 == 200 %}
+            {{ num_1 }} is 200
+        {% else %}
+            {{ num_1 }} is greater than 200
+        {% endif %}
+    </div>
+    <div>
+        {% if num_2 < 200 %}
+            {{ num_2 }} is less than 200
+        {% elif num_2 == 200 %}
+            {{ num_2 }} is 200
+        {% else %}
+            {{ num_2 }} is greater than 200
+        {% endif %}
+    </div>
+    <div>
+        {% if num_3 < 200 %}
+            {{ num_3 }} is less than 200
+        {% elif num_3 == 200 %}
+            {{ num_3 }} is 200
+        {% else %}
+            {{ num_3 }} is greater than 200
+        {% endif %}
+    </div>
+    <div>
+        {% for number in numbers %}
+            <div>
+                {{ number }}
+            </div>
+        {% endfor %}
+    </div>
+    <div>
+        {% for number in numbers %}
+            <div>
+                {% if number < 200 %}
+                    {{ number }} is less than 200
+                {% elif number == 200 %}
+                    {{ number }} is 200
+                {% else %}
+                    {{ number }} is greater than 200
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+    <div>
+        {% for employee in employees %}
+            <li>
+                {{ employee.first_name }} {{ employee.last_name }}
+                (<i>{{ employee.get_job_title_display }}</i> in
+                <strong>{{ employee.department.name }}</strong> )
+            </li>
+        {% endfor %}
+    </div>
+    {% department_list %}
+    {{ csrf_token }}
+
+{% endblock %}

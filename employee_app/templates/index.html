@@ -1,17 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-</head>
-<body>
+{% extends 'base/base.html' %}
+
+{% block content %}
 <h1>It works!</h1>
 <h2>The number is {{ number }}</h2>
-<a href="{% url 'go to home' %}">Go to HOME</a>
 <ul>
     {% for num in numbers %}
         <li>Number {{ num }}</li>
     {% endfor %}
 </ul>
-</body>
-</html>
+
+{% endblock %}
