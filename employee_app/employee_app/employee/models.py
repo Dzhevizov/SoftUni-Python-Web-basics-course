@@ -1,3 +1,4 @@
+from django.core import validators
 from django.db import models
 
 
@@ -48,6 +49,9 @@ class Employee(models.Model):
         null=True,
         unique=True,
         verbose_name='EGN',
+        validators=(
+            validators.MinLengthValidator(10),
+        )
     )
 
     job_title = models.IntegerField(
@@ -70,6 +74,12 @@ class Employee(models.Model):
     department = models.ForeignKey(
         Department,
         on_delete=models.CASCADE,
+    )
+
+    image = models.ImageField(
+        null=True,
+        blank=True,
+        upload_to='profiles',
     )
 
     class Meta:

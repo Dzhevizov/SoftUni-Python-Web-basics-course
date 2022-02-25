@@ -1,0 +1,47 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    <form method="post" action="{% url 'create employee' %}" enctype="multipart/form-data">
+    {{ employee_form }}
+{#    <h3>Manual</h3>#}
+{#        {{ employee_form.age.errors }}#}
+{#        {% for err in employee_form.age.errors %}#}
+{#            {{ err }}#}
+{#        {% endfor %}#}
+    {% csrf_token %}
+    <button>Save</button>
+    </form>
+
+    <form method="get" action="{% url 'create employee' %}">
+    {{ employee_order_form }}
+    <button>Order</button>
+    </form>
+
+    <table>
+    <tr>
+        <th>#</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Job title</th>
+        <th>Company</th>
+        <th>Action</th>
+    </tr>
+    {% for employee in employees %}
+        <tr>
+        <td>
+            {% if employee.image %}
+                <img height="40" src="{{ employee.image.url }}" alt="image">
+            {% else %}
+                No image
+            {% endif %}
+            </td>
+        <td>{{ employee.first_name }}</td>
+        <td>{{ employee.last_name }}</td>
+        <td>{{ employee.get_job_title_display }}</td>
+        <td>{{ employee.company }}</td>
+        <td><a href="{% url 'edit employee' employee.id %}">Edit</a></td>
+        </tr>
+    {% endfor %}
+
+    </table>
+{% endblock %}
