@@ -42,29 +42,40 @@
 </nav>
 <!-- End Navigation Bar -->
 
-<div class="container mb-5 ">
-    <h1 class="text-center">Edit Pet Photo</h1>
-    <img src="https://images.unsplash.com/photo-1623387641168-d9803ddd3f35?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGV0c3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-         class="w-50 rounded mx-auto d-block" alt="Photo description">
+<div class="container">
+    <h1 class="text-center">Add new pet photo</h1>
     <div class="row">
         <div class="col-lg-3"></div>
         <div class="col-lg-6">
-            <form method="POST" action="photo_details.html">
 
-                <!-- Form for Editing a Photo -->
+            <!-- Form for Adding Pet -->
+            <form method="post" action="../acounts/profile_details.html">
+                <div class="form-group">
+                    <label for="name">Pet Name</label>
+                    <input type="text" class="form-control" name="first_name" placeholder="Enter name"
+                           id="name"/>
+                </div>
+                <div class="form-group">
+                    <label for="type_animal" class="col-form-label">Type:
+                    <select class="form-select">
+                        <option value="first">Cat</option>
+                        <option value="second">Dog</option>
+                        <option value="third">Mouse</option>
+                    </select></label>
+                </div>
+                <div class="form-group">
+                    <label for="age">Day of Birth:</label>
+                    <input type="date" class="form-control" name="age" placeholder=""
+                           id="age"/>
+                </div>
 
-                <button class="btn btn-primary mt-2" type="submit">Edit</button>
+                <button class="btn btn-primary mt-2" type="submit">Create</button>
             </form>
+            <!-- End Form for Adding Pet -->
         </div>
         <div class="col-lg-3"></div>
     </div>
 </div>
-
-<!-- Page Footer -->
-<footer class="fixed-bottom card-footer">
-    <div>@2022 Python Web Basics Workshop at SoftUni</div>
-</footer>
-<!-- End Page Footer -->
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

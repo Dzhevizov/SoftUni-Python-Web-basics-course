@@ -1,16 +1,13 @@
 from django.contrib import admin
 
-from petstagram.main.models import Pet, Profile, PetsPhoto
+from petstagram.main.models import Pet, PetsPhoto
 
 
 class PetInLineAdmin(admin.StackedInline):
     model = Pet
 
 
-@admin.register(Profile)
-class ProfileAdmin(admin.ModelAdmin):
-    inlines = (PetInLineAdmin,)
-    list_display = ('first_name', 'last_name')
+
 
 
 @admin.register(Pet)
